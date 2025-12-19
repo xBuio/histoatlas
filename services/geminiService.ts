@@ -1,6 +1,7 @@
 import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const apiKey = import.meta.env.VITE_GEMINI_API_KEY || process.env.API_KEY || "";
+const ai = new GoogleGenAI({ apiKey });
 
 // 1. Analyze Image using gemini-3-pro-preview
 export const analyzeImage = async (base64Image: string, prompt: string): Promise<string> => {
